@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://8yivdsvr0m76"]
+
+[ext_resource type="Script" uid="uid://pyhhaw1wypp" path="res://shop_ui.gd" id="1_ciaf0"]
+
+[node name="shopUI" type="Control" unique_id=1805170531]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ciaf0")
+
+[node name="Panel" type="Panel" parent="." unique_id=904326450]
+layout_mode = 0
+offset_right = 310.0
+offset_bottom = 114.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1672871286]
+layout_mode = 0
+offset_right = 313.0
+offset_bottom = 118.0
+theme_override_constants/separation = 5
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer" unique_id=269770020]
+layout_mode = 2
+text = "shop"
+
+[node name="CoinsLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1585158449]
+layout_mode = 2
+text = "shop"
+
+[node name="MessageLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1077505509]
+layout_mode = 2
+text = "shop"
+
+[node name="potion" type="Button" parent="Panel/VBoxContainer" unique_id=546922185]
+layout_mode = 2
+text = "potion - 10"
+
+[node name="sword" type="Button" parent="Panel/VBoxContainer" unique_id=938566511]
+layout_mode = 2
+text = "sword - 50"
+
+[node name="shield" type="Button" parent="Panel/VBoxContainer" unique_id=801117742]
+layout_mode = 2
+text = "shield - 40"
+
+[node name="close" type="Button" parent="Panel/VBoxContainer" unique_id=1782607242]
+layout_mode = 2
+text = "close"
+
+[connection signal="pressed" from="Panel/VBoxContainer/potion" to="." method="_on_potion_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/sword" to="." method="_on_sword_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/shield" to="." method="_on_shield_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/close" to="." method="_on_close_pressed"]
