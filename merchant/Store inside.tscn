@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dga01q3mwnio7"]
+
+[ext_resource type="Script" uid="uid://rqrw1syvqbdd" path="res://merchant/store_inside.gd" id="1_oyyt4"]
+[ext_resource type="Texture2D" uid="uid://dss02wa02183y" path="res://icon.svg" id="1_sy1y4"]
+
+[node name="Control" type="PanelContainer" unique_id=1980447463]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oyyt4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=521428774]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1668192349]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer" unique_id=1428671238]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+texture = ExtResource("1_sy1y4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=1112054313]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2" unique_id=1527003343]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1189101921]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "God Item"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1249159861]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Power to anihilate everything"
+
+[node name="Control" type="Control" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=683837507]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1419281994]
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://sh14t10lahd3"]
+
+[ext_resource type="Script" uid="uid://63y5w4oml1bk" path="res://merchant/store_outside.gd" id="1_nhaiq"]
+
+[node name="Control" type="Control" unique_id=182917235]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nhaiq")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1402977949]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=871596904]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
