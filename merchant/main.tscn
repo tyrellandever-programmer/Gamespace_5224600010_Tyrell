@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://1enhaytvgiu1"]
 
-[ext_resource type="Script" uid="uid://cdwclu3xcem14" path="res://main.gd" id="1_qu3h0"]
-[ext_resource type="PackedScene" uid="uid://buqmreo4lurbt" path="res://Player.tscn" id="2_uwtg1"]
+[ext_resource type="Script" uid="uid://cdwclu3xcem14" path="res://merchant/main.gd" id="1_qu3h0"]
+[ext_resource type="PackedScene" uid="uid://buqmreo4lurbt" path="res://magnet/Player.tscn" id="2_uwtg1"]
 [ext_resource type="PackedScene" uid="uid://dctpcofch24qx" path="res://merchant/merchant.tscn" id="3_dml38"]
 [ext_resource type="Texture2D" uid="uid://dt2whgxkt8mk0" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="4_da7v1"]
 [ext_resource type="PackedScene" uid="uid://8yivdsvr0m76" path="res://merchant/shop_ui.tscn" id="5_uwtg1"]
@@ -147,7 +147,7 @@ script = ExtResource("1_qu3h0")
 [node name="Player" parent="." unique_id=542835962 instance=ExtResource("2_uwtg1")]
 
 [node name="merchant" parent="." unique_id=359791470 instance=ExtResource("3_dml38")]
-position = Vector2(59, -9)
+position = Vector2(59, -39)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=150184795]
 
