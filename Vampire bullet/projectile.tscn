@@ -12,8 +12,6 @@ radius = 2.236068
 script = ExtResource("1_7obp6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2078665976]
-light_mask = 3
-visibility_layer = 3
 position = Vector2(1.1920929e-07, -5.9604645e-08)
 scale = Vector2(2, 2)
 skew = 1.0524335

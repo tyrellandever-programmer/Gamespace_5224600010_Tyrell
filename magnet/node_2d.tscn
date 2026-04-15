@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dow61m8ik2xhq" path="res://merchant/Player_data.gd" id="2_0ndqp"]
 [ext_resource type="Texture2D" uid="uid://dt2whgxkt8mk0" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="2_epypp"]
 [ext_resource type="PackedScene" uid="uid://bdnuaqsypeppq" path="res://Vampire bullet/projectile.tscn" id="2_pn3se"]
+[ext_resource type="PackedScene" uid="uid://qjlxoqcojbwn" path="res://Vampire bullet/Enemy.tscn" id="6_4c58u"]
 
 [sub_resource type="Resource" id="Resource_4c58u"]
 script = ExtResource("2_0ndqp")
@@ -175,11 +176,12 @@ sources/2 = SubResource("TileSetAtlasSource_x0ka3")
 [node name="Node2D" type="Node2D" unique_id=1331119686]
 
 [node name="Player" parent="." unique_id=783591829 instance=ExtResource("1_2cdre")]
+position = Vector2(21, 33)
 data = SubResource("Resource_4c58u")
 projectile_scene = ExtResource("2_pn3se")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=322620025]
-position = Vector2(174, -24)
+position = Vector2(270, 40)
 script = ExtResource("2_0hol4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1424312818]
@@ -198,3 +200,6 @@ metadata/_edit_group_ = true
 use_parent_material = true
 tile_map_data = PackedByteArray("AAADAAMAAgAJAAAAAAAEAAMAAgAKAAAAAAAFAAMAAgALAAAAAAAGAAMAAgACAAAAAAAHAAMAAgACAAAAAAAIAAMAAgACAAAAAAAJAAMAAgAJAAEAAAAKAAMAAgAKAAEAAAALAAMAAgALAAEAAAACAAMAAgAAAAAAAAABAAMAAgAAAAAAAAAAAAMAAgAAAAAAAAA=")
 tile_set = SubResource("TileSet_0h7mo")
+
+[node name="Node2D" parent="." unique_id=753857696 instance=ExtResource("6_4c58u")]
+position = Vector2(126, 35)
