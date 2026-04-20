@@ -5,3 +5,6 @@ class_name PlayerData
 @export var hp = 100
 @export var damage = 10
 @export var lifesteal = 0.3
+
+@export var coins = 100
+@export var inventory: Array = []

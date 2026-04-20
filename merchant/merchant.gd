@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var player_data: PlayerData
+
 var items = [
 	{"name":"Potion","price":10},
 	{"name":"Sword","price":50},
@@ -7,12 +9,11 @@ var items = [
 ]
 
 func buy_item(index):
-
 	var item = items[index]
 
-	if PlayerData.coins >= item["price"]:
-		PlayerData.coins -= item["price"]
-		PlayerData.inventory.append(item["name"])
+	if player_data.coins >= item["price"]:
+		player_data.coins -= item["price"]
+		player_data.inventory.append(item["name"])
 		print("Membeli ", item["name"])
 	else:
 		print("Koin tidak cukup")
