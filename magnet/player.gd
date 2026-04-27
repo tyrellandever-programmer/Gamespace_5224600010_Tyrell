@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-var pull_force: Vector2 = Vector2.ZERO
+var facing = 1
 
 @export var data: PlayerData
 @export var projectile_scene: PackedScene
@@ -12,25 +12,15 @@ var pull_force: Vector2 = Vector2.ZERO
 
 var can_shoot = true
 var shoot_cooldown = 0.3
-var melee_range = 60
 
 
 func _ready():
 	add_to_group("player")
-
-	if data == null:
-		push_warning("DATA BELUM DIISI!")
-		return
-
+	facing = 1
 	update_hp_bar()
 
 
 func _physics_process(delta):
-
-	if data == null:
-		return
-
-	# GRAVITY
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -43,12 +33,13 @@ func _physics_process(delta):
 
 	if direction != 0:
 		velocity.x = direction * SPEED
+		facing = sign(direction)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	# PULL FORCE
-	velocity += pull_force * delta
-	pull_force = Vector2.ZERO
+	# pastikan facing tidak pernah 0
+	if facing == 0:
+		facing = 1
 
 	move_and_slide()
 
@@ -58,62 +49,72 @@ func _input(event):
 		shoot()
 
 
+# ========================
+# SHOOT SYSTEM (AUTO TARGET)
+# ========================
 func shoot():
 	if not can_shoot:
 		return
 
 	can_shoot = false
 
-	# ===== RANGED ATTACK (PROJECTILE) =====
+	var target = get_nearest_enemy()
+	var dir: Vector2 = Vector2.ZERO
+
+	# PRIORITAS: enemy terdekat
+	if target != null:
+		dir = (target.global_position - global_position).normalized()
+
+	# FALLBACK: arah karakter
+	if dir == Vector2.ZERO:
+		dir = Vector2(facing, 0)
+
 	if projectile_scene != null:
 		var p = projectile_scene.instantiate()
 
-		var dir = (get_global_mouse_position() - global_position).normalized()
-		if dir == Vector2.ZERO:
-			dir = Vector2.RIGHT
-
 		p.global_position = global_position + dir * 30
-		p.direction = dir
+		p.direction = dir.normalized()
 		p.shooter = self
 
 		get_tree().current_scene.add_child(p)
+	else:
+		print("❌ projectile_scene belum diisi!")
 
-	# ===== MELEE ATTACK (JARAK DEKAT) =====
-	for body in get_tree().get_nodes_in_group("enemy"):
-		if body == null:
-			continue
-
-		if global_position.distance_to(body.global_position) <= melee_range:
-			if body.has_method("take_damage"):
-				body.take_damage(data.damage)
-
-	# cooldown
 	await get_tree().create_timer(shoot_cooldown).timeout
 	can_shoot = true
 
 
-func take_damage(amount):
-	if data == null:
-		return
+# ========================
+# CARI ENEMY TERDEKAT
+# ========================
+func get_nearest_enemy():
+	var enemies = get_tree().get_nodes_in_group("enemy")
 
+	var nearest = null
+	var min_dist = INF
+
+	for e in enemies:
+		if e == null:
+			continue
+
+		var dist = global_position.distance_to(e.global_position)
+
+		if dist < min_dist:
+			min_dist = dist
+			nearest = e
+
+	return nearest
+
+
+# ========================
+# DAMAGE SYSTEM
+# ========================
+func take_damage(amount):
 	data.hp = max(data.hp - amount, 0)
 	update_hp_bar()
 
-	print("💔 Player kena:", amount, "HP:", data.hp)
-
-	# knockback
-	velocity += Vector2(-150, -100)
-
 	if data.hp <= 0:
 		die()
-
-
-func heal(amount):
-	if data == null:
-		return
-
-	data.hp = min(data.hp + amount, data.max_hp)
-	update_hp_bar()
 
 
 func update_hp_bar():
@@ -122,5 +123,4 @@ func update_hp_bar():
 
 
 func die():
-	print("☠ PLAYER DEAD")
 	queue_free()

@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://6vrhu8n5182a" path="res://magnet/player.gd" id="1_grav3"]
 [ext_resource type="Texture2D" uid="uid://b3nr06kjenmsm" path="res://brackeys_platformer_assets/sprites/knight.png" id="1_xhfnw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kne1u"]
-radius = 7.071068
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grav3"]
+size = Vector2(13, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q6r6c"]
 atlas = ExtResource("1_xhfnw")
@@ -104,12 +104,11 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=542835962]
-position = Vector2(1, 1)
 script = ExtResource("1_grav3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1028422905]
-position = Vector2(2, 0)
-shape = SubResource("CircleShape2D_kne1u")
+position = Vector2(-1.5, -1.5)
+shape = SubResource("RectangleShape2D_grav3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=164875280]
 position = Vector2(-1, -4)
