@@ -9,6 +9,9 @@ var facing = 1
 @export var projectile_scene: PackedScene
 
 @onready var hp_bar = $ProgressBar
+@onready var exp_bar = $ProgressBar2
+@onready var level_label = $Label
+@onready var level_effect = $LevelUpEffect
 
 var can_shoot = true
 var shoot_cooldown = 0.3
@@ -18,6 +21,7 @@ func _ready():
 	add_to_group("player")
 	facing = 1
 	update_hp_bar()
+	update_level_label()
 
 
 func _physics_process(delta):
@@ -124,3 +128,39 @@ func update_hp_bar():
 
 func die():
 	queue_free()
+	
+# ========================
+# EXPERIENCE SYSTEM
+# ========================
+
+func add_exp(amount):
+	data.exp += amount
+
+	while data.exp >= data.max_exp:
+		level_up()
+
+	update_exp_bar()
+	
+func update_exp_bar():
+	if exp_bar:
+		exp_bar.max_value = data.max_exp
+		exp_bar.value = data.exp
+
+func level_up():
+	data.level += 1
+	data.exp -= data.max_exp
+	data.max_exp += 50
+
+	update_level_label()
+	play_level_effect()
+
+	print("LEVEL UP! Level sekarang:", data.level)
+
+func update_level_label():
+	if level_label:
+		level_label.text = "Lv " + str(data.level)
+
+func play_level_effect():
+	if level_effect:
+		level_effect.global_position = global_position
+		level_effect.restart()

@@ -103,6 +103,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grav3"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5s0f"]
+bg_color = Color(0.003921569, 0.011764706, 0.9843137, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_grav3"]
+lifetime_randomness = 0.8
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 98, 0)
+
 [node name="Player" type="CharacterBody2D" unique_id=542835962]
 script = ExtResource("1_grav3")
 
@@ -120,9 +134,33 @@ frame_progress = 0.1985841
 position = Vector2(1, -1)
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=2117751213]
-offset_left = -22.0
-offset_top = -18.0
-offset_right = 28.0
-offset_bottom = -14.0
+offset_left = -24.0
+offset_top = -23.0
+offset_right = 26.0
+offset_bottom = -19.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_grav3")
 value = 100.0
 show_percentage = false
+
+[node name="ProgressBar2" type="ProgressBar" parent="." unique_id=565768790]
+offset_left = -24.0
+offset_top = -17.0
+offset_right = 25.0
+offset_bottom = -13.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_y5s0f")
+show_percentage = false
+
+[node name="Label" type="Label" parent="." unique_id=1859781281]
+offset_left = 26.0
+offset_top = -31.0
+offset_right = 59.0
+offset_bottom = -8.0
+text = "LV.1"
+
+[node name="LevelUpEffect" type="GPUParticles2D" parent="." unique_id=1537020889]
+emitting = false
+amount = 120
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 5.0
+process_material = SubResource("ParticleProcessMaterial_grav3")

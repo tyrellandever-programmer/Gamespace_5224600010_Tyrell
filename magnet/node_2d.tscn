@@ -203,7 +203,7 @@ data = SubResource("Resource_4c58u")
 projectile_scene = ExtResource("2_pn3se")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=322620025]
-position = Vector2(287, -48)
+position = Vector2(1, -79)
 script = ExtResource("2_0hol4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1424312818]
@@ -230,3 +230,6 @@ tile_map_data = PackedByteArray("AAADAAMAAgAJAAAAAAAEAAMAAgAKAAAAAAAFAAMAAgALAAA
 tile_set = SubResource("TileSet_0h7mo")
 
 [node name="Enemy" parent="NavigationRegion2D2" unique_id=753857696 instance=ExtResource("6_4c58u")]
+
+[node name="Enemy2" parent="NavigationRegion2D2" unique_id=2016623239 instance=ExtResource("6_4c58u")]
+position = Vector2(-169, -64)

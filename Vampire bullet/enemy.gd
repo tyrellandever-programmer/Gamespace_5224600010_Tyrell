@@ -189,4 +189,9 @@ func take_damage(amount):
 
 
 func die():
+	var player = get_tree().get_first_node_in_group("player")
+
+	if player:
+		player.add_exp(75)
+
 	queue_free()
